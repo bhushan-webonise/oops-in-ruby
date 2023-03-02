@@ -1,8 +1,10 @@
 $LOAD_PATH << '.'
 require 'csv'
+require 'emp_module'
 class Company 
 
-  attr_accessor :company_id,:company_name,:no_of_employee,:no_of_division,:hr_head_nam
+  attr_accessor :company_id,:company_name,:no_of_employee,:no_of_division,:hr_head_name
+  include Emp_details 
   def initialize(company_id,company_name,no_of_employee,no_of_division,hr_head_name)
    @company_id=company_id
    @company_name=company_name
@@ -23,7 +25,7 @@ class Company
   
  def csv_read
     employeedetails=[]
-    file=CSV.parse(File.open("employeedetails.csv",'r'))
+    file=CSV.parse(File.open(Emp_details.show_details,'r'))
     file.each do |row|
        puts "#{row[0]} #{row[1]} #{row[2]} #{row[3]}"
     end
