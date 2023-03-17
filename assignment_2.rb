@@ -8,18 +8,18 @@ class Company
   @hr_head_name=hr_head_name
  end
 
- def company_details()
+ def company_details
   puts "The name of the company is #{@company_name} and the number of employee #{@no_of_employee} and the number of division is #{@no_of_division}"
  end
 
  private
-  def hr_details()
+  def hr_details
     puts "The name of hr head is #{@hr_head_name}"
   end
 end
 
 class Division
-  attr_accessor :dept_id,:dept_name,:no_of_employee,:dept_slogan
+  
   def initialize(dept_id,dept_name,no_of_employee,dept_slogan)
     @dept_id=dept_id
     @dept_name=dept_name
@@ -31,19 +31,17 @@ class Division
     puts "#{@dept_id} :The  #{@dept_name} has #{@no_of_employee} employee"
   end
   
-  private
   def get_slogan()
-      puts "#{@dept_name} : #{@dept_slogan}"
-  end
-  
+    puts "#{@dept_name} : #{@dept_slogan}"
+  end  
 end
 
-class HumanResources < Division
-
-
+class HumanResource < Division
+  
   def get_info()
-  puts "in HR dept"
+    puts "in HR dept"
   end
+
 end
 
 class InfoTechnology < Division
@@ -58,21 +56,21 @@ class QA < Division
   end
 end
 
-class Sales < Division
+class Sale < Division
     def get_info()
       puts "in sales deppt"
     end
 end
 
-
-hr_info=HumanResources.new("1","HR","10","in HR dept")
+hr_info=HumanResource.new("1","HR","10","in HR dept")
 hr_info.dept_details
 
 qa_info=QA.new("2","QA","20","in QA dept")
 qa_info.dept_details
 
-sales_info=Sales.new("3","Sales","30","in Sales dept")
+sales_info=Sale.new("3","Sales","30","in Sales dept")
 sales_info.dept_details
 
 it_info=InfoTechnology.new("4","IT","40","in IT dept")
 it_info.dept_details
+
